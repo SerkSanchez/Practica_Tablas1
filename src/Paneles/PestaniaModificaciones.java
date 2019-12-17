@@ -139,7 +139,36 @@ public class PestaniaModificaciones extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == comboClave) {
+            Persona persona = (Persona) comboClave.getModel().getSelectedItem();
+            String nombre = persona.getNombre();
+            String apellido = persona.getApellido();
+            String calle = persona.getCalle();
+            int numero = persona.getNumero();
+            int edad = persona.getEdad();
+            int cd = persona.getCodigoPostal();
 
+            etiqNombre.setText(nombre);
+            etiqapellido.setText(apellido);
+            etiqEdad.setText(calle);
+            taCalle.setText(Integer.toString(numero));
+            taNumero.setText(Integer.toString(edad));
+            taCP.setText(Integer.toString(cd));
+        } else if (e.getSource()== btnModificar){
+            etiqNombre.setEditable(true);
+            etiqapellido.setEditable(true);
+            etiqEdad.setEditable(true);
+            taCalle.setEditable(true);
+            taNumero.setEditable(true);
+            taCP.setEditable(true);
+        }else if (e.getSource() == btnLimpia){
+            etiqNombre.setText(" ");
+            etiqapellido.setText(" ");
+            etiqEdad.setText(" ");
+            taCalle.setText(" ");
+            taNumero.setText(" ");
+            taCP.setText(" ");
+        }
     }
 
     public void añadirPersona(String clave) {

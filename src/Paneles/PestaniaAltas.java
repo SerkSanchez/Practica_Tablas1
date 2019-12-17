@@ -1,5 +1,7 @@
 package Paneles;
 
+import utils.Persona;
+
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
@@ -9,12 +11,12 @@ import java.awt.event.ActionListener;
 public class PestaniaAltas extends JPanel implements ActionListener {
     JLabel txtClave, txtNombre, txtApellido, txtEdad, txtCalle, txtNumero, txtCP;
     JTextField etiqClave, etiqNombre, etiqApellido, etiqEdad;
-    JTextArea taCalle,taNumero,taCP;
+    JTextArea taCalle, taNumero, taCP;
     JButton btnAlta;
 
     TitledBorder borderDatosPersonales, borderDireccion;
 
-    JPanel panelSuperior,panelInferior,panelCentro;
+    JPanel panelSuperior, panelInferior, panelCentro;
 
     public PestaniaAltas() {
         initGUI();
@@ -57,8 +59,8 @@ public class PestaniaAltas extends JPanel implements ActionListener {
     private void configurarContainer() {
         this.setLayout(new BorderLayout());
         this.add(configurarSuperior(), BorderLayout.NORTH);
-        this.add(configurarCentro(),BorderLayout.CENTER);
-        this.add(configurarInferior(),BorderLayout.SOUTH);
+        this.add(configurarCentro(), BorderLayout.CENTER);
+        this.add(configurarInferior(), BorderLayout.SOUTH);
     }
 
     private JPanel configurarInferior() {
@@ -67,7 +69,7 @@ public class PestaniaAltas extends JPanel implements ActionListener {
     }
 
     private JPanel configurarCentro() {
-        panelCentro.setLayout(new GridLayout(3,2,40,10));
+        panelCentro.setLayout(new GridLayout(3, 2, 40, 10));
         panelCentro.setBorder(borderDireccion);
         panelCentro.add(txtCalle);
         panelCentro.add(taCalle);
@@ -80,7 +82,7 @@ public class PestaniaAltas extends JPanel implements ActionListener {
     }
 
     private JPanel configurarSuperior() {
-        panelSuperior.setLayout(new GridLayout(4,2,40,5));
+        panelSuperior.setLayout(new GridLayout(4, 2, 40, 5));
         panelSuperior.setBorder(borderDatosPersonales);
         panelSuperior.add(txtClave);
         panelSuperior.add(etiqClave);
@@ -100,6 +102,30 @@ public class PestaniaAltas extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == btnAlta) {
+            if (etiqClave.getText().isEmpty() ||
+                    etiqNombre.getText().isEmpty() ||
+                    etiqApellido.getText().isEmpty() ||
+                    etiqEdad.getText().isEmpty() ||
+                    taCalle.getText().isEmpty() ||
+                    taNumero.getText().isEmpty() ||
+                    taCP.getText().isEmpty()) {
 
+                JOptionPane.showMessageDialog(this, "Mensaje WARNING",
+                        "El campo está vacío", JOptionPane.INFORMATION_MESSAGE, null);
+            } else {
+                String nombre = etiqNombre.getText();
+                String apellido = etiqApellido.getText();
+                String clave = etiqClave.getText();
+                String calle = taCalle.getText();
+                int numero = Integer.valueOf(taNumero.getText());
+                int edad = Integer.valueOf(etiqEdad.getText());
+                int cp = Integer.valueOf(taCP.getText());
+
+                //panel2.getModelo().addElement(new Persona(clave, nombre, apellido, calle, edad, numero, cp));
+                //panel3.getModelo().addElement(new Persona(clave, nombre, apellido, calle, edad, numero, cp));
+                //panel4.getModelo().addElement(new Persona(clave, nombre, apellido, calle, edad, numero, cp));
+            }
+        }
     }
 }

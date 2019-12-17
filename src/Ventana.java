@@ -24,8 +24,6 @@ public class Ventana extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
-        acciones();
-
     }
 
     private void configurarContainer() {
@@ -37,9 +35,6 @@ public class Ventana extends JFrame {
         panelPestanias.addTab("Bajas", pestaniaBajas); //Titulo, Icono, Tip
         panelPestanias.addTab("Modificaciones", pestaniaModificaciones); //Titulo, Icono, Tip
         panelPestanias.addTab("Resumen", pestaniaResumen); //Titulo, Icono, Tip
-    }
-
-    private void acciones() {
     }
 
     private void instancias() {

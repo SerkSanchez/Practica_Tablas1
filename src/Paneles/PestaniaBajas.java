@@ -136,11 +136,26 @@ public class PestaniaBajas extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-    }
-
-    public void añadirPersona(String clave) {
-        System.out.println(clave);
-        //modelocombobox.addElement(clave);
+        if (e.getSource() == comboClave) {
+            Persona persona = (Persona) comboClave.getModel().getSelectedItem();
+            String nombre = persona.getNombre();
+            String apellido = persona.getApellido();
+            String calle = persona.getCalle();
+            int numero = persona.getNumero();
+            int edad = persona.getEdad();
+            int cp = persona.getCodigoPostal();
+            etiqNombre.setText(nombre);
+            etiqapellido.setText(apellido);
+            taCalle.setText(calle);
+            taNumero.setText(Integer.toString(numero));
+            etiqEdad.setText(Integer.toString(edad));
+            taCP.setText(Integer.toString(cp));
+        }
+        if (e.getSource() == btnBaja){
+            if (etiqNombre.getText().isEmpty()) {
+                Persona persona = (Persona) comboClave.getModel().getSelectedItem();
+                modeloCombo.removeElement(persona);
+            }
+        }
     }
 }

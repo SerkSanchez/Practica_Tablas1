@@ -1,5 +1,7 @@
 package Paneles;
 
+import utils.Persona;
+
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
@@ -50,6 +52,8 @@ public class PestaniaResumen extends JPanel implements ActionListener {
         btnBaja = new JButton("Dar de Baja");
 
         borderDatos = new TitledBorder("Datos");
+
+        tabla = new JTable(modeloTabla);
 
         panelCentro = new JPanel();
         panelInferior= new JPanel();
@@ -123,6 +127,18 @@ public class PestaniaResumen extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == btnAlta){
+            String nombre = etiqNombre.getText();
+            String apellido = etiqApellido.getText();
+            String clave = etiqClave.getText();
+            String calle = etiqCalle.getText();
+            int numero = Integer.valueOf(etiqNumero.getText());
+            int edad = Integer.valueOf(etiqEdad.getText());
+            int cp = Integer.valueOf(etiqCP.getText());
+        }else if (e.getSource() == btnBaja){
+            if (tabla.getSelectedRow() !=1) {
 
+            }
+        }
     }
 }
